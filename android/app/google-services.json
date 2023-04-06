@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "104873571015",
+    "project_id": "two-plus-4f086",
+    "storage_bucket": "two-plus-4f086.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:104873571015:android:de1b00e63bf84d41fb04e2",
+        "android_client_info": {
+          "package_name": "com.example.two_plus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "104873571015-vn7f80ou8uibsd5j7fbli5vso9j30knh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0hoAlJ8fOpF6sW6MBskNrlfFCsZ2Ibkk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "104873571015-vn7f80ou8uibsd5j7fbli5vso9j30knh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
