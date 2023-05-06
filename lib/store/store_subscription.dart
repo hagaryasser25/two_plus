@@ -38,7 +38,6 @@ class _UserSubscriptionState extends State<UserSubscription> {
     fetchSubscriptions();
   }
 
-  @override
   void fetchSubscriptions() async {
     app = await Firebase.initializeApp();
     database = FirebaseDatabase(app: app);

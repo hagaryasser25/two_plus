@@ -7,6 +7,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:two_plus/admin/add_store.dart';
 import 'package:two_plus/admin/admin_complains.dart';
 import 'package:two_plus/admin/admin_offers.dart';
+import 'package:two_plus/admin/admin_phones.dart';
 import 'package:two_plus/admin/admin_stores.dart';
 import 'package:two_plus/admin/admin_subscription.dart';
 import 'package:two_plus/auth/login_page.dart';
@@ -30,9 +31,9 @@ class _AdminHomeState extends State<AdminHome> {
         builder: (context, child) => Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
-              backgroundColor: Color.fromARGB(255, 243, 90, 79),
-              title: Center(child: Text('الصفحة الرئيسية')),
-               actions: [
+            backgroundColor: Color.fromARGB(255, 243, 90, 79),
+            title: Center(child: Text('الصفحة الرئيسية')),
+            actions: [
               IconButton(
                 color: Colors.white,
                 onPressed: () {
@@ -64,46 +65,53 @@ class _AdminHomeState extends State<AdminHome> {
                 icon: Icon(Icons.logout),
               ),
             ],
-              
-              ),
-          body: Column(
-            children: [
-              Image.asset('assets/images/admin.png'),
-              SizedBox(height: 20.h),
-              Text('الخدمات المتاحة',
-                  style: TextStyle(fontSize: 27, fontWeight: FontWeight.w500)),
-              Row(
-                children: [
-                  InkWell(
-                      onTap: () {
-                         Navigator.pushNamed(context, AdminStores.routeName);
-                      },
-                      child: card('#ff5a4e', 'أضافة متجر')),
-                  InkWell(
-                      onTap: () {
-                         Navigator.pushNamed(context,AdminOffers.routeName);
-                      },
-                      child: card('#ea9999', 'أضافة عرض')),
-                ],
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              Row(
-                children: [
-                  InkWell(
-                      onTap: () {
-                         Navigator.pushNamed(context, AdminSubscription.routeName);
-                      },
-                      child: card('#ea9999', 'اشتراكات المتاجر')),
-                  InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, AdminComplains.routeName);
-                      },
-                      child: card('#ff5a4e', 'الشكاوى')),
-                ],
-              ),
-            ],
+          ),
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                Image.asset('assets/images/admin.png'),
+                SizedBox(height: 20.h),
+                Text('الخدمات المتاحة',
+                    style: TextStyle(fontSize: 27, fontWeight: FontWeight.w500)),
+                Row(
+                  children: [
+                    InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, AdminStores.routeName);
+                        },
+                        child: card('#ff5a4e', 'أضافة متجر')),
+                    InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, AdminOffers.routeName);
+                        },
+                        child: card('#ea9999', 'أضافة عرض')),
+                  ],
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                Row(
+                  children: [
+                    InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, AdminSubscription.routeName);
+                        },
+                        child: card('#ea9999', 'اشتراكات المتاجر')),
+                    InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, AdminComplains.routeName);
+                        },
+                        child: card('#ff5a4e', 'الشكاوى')),
+                  ],
+                ),
+                InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, AdminPhones.routeName);
+                    },
+                    child: card('#ff5a4e', 'أضافة هاتف')),
+              ],
+            ),
           ),
         ),
       ),

@@ -58,7 +58,7 @@ class _StoreProductsState extends State<StoreProducts> {
     fetchProducts();
   }
 
-  @override
+
   void fetchProducts() async {
     app = await Firebase.initializeApp();
     database = FirebaseDatabase(app: app);

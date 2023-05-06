@@ -206,6 +206,7 @@ class _SignupPageState extends State<SignupPage> {
                             ),
                             SizedBox(height: 10.h),
                             ConstrainedBox(
+                              
                               constraints: BoxConstraints.tightFor(
                                   width: 150.w, height: 50.h),
                               child: ElevatedButton(

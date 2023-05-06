@@ -1,50 +1,57 @@
+import 'package:animated_flip_card/animated_flip_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
+import 'package:two_plus/admin/add_offer.dart';
+import 'package:two_plus/admin/add_phone.dart';
+import 'package:two_plus/admin/add_store.dart';
+import 'package:two_plus/models/offer_model.dart';
 import 'package:two_plus/models/products_model.dart';
-import 'package:two_plus/models/request_model.dart';
-import 'package:two_plus/store/add_product.dart';
-import 'package:two_plus/store/store-prices.dart';
-import 'package:two_plus/user/user_prices.dart';
+import 'package:two_plus/models/store_model.dart';
+import 'package:two_plus/user/phone_details.dart';
 
-class UserProducts extends StatefulWidget {
-  String name;
-  static const routeName = '/userProducts';
-  UserProducts({required this.name});
+import '../models/phones_model.dart';
+
+class UserPhones extends StatefulWidget {
+  static const routeName = '/userPhones';
+  const UserPhones({super.key});
 
   @override
-  State<UserProducts> createState() => _UserProductsState();
+  State<UserPhones> createState() => _UserPhonesState();
 }
 
-class _UserProductsState extends State<UserProducts> {
+class _UserPhonesState extends State<UserPhones> {
   late DatabaseReference base;
   late FirebaseDatabase database;
   late FirebaseApp app;
-
-  List<Products> productList = [];
+  List<Phones> productList = [];
+  List<Phones> searchList = [];
   List<String> keyslist = [];
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    fetchProducts();
+    fetchPhones();
   }
 
-  void fetchProducts() async {
+  void fetchPhones() async {
     app = await Firebase.initializeApp();
     database = FirebaseDatabase(app: app);
-    base = database.reference().child("products").child('${widget.name}');
+    base = database.reference().child("phones");
     base.onChildAdded.listen((event) {
       print(event.snapshot.value);
-      Products p = Products.fromJson(event.snapshot.value);
+      Phones p = Phones.fromJson(event.snapshot.value);
       productList.add(p);
+      searchList.add(p);
       keyslist.add(event.snapshot.key.toString());
       print(keyslist);
       setState(() {});
@@ -63,6 +70,40 @@ class _UserProductsState extends State<UserProducts> {
                 title: Center(child: Text('المنتجات'))),
             body: Column(
               children: [
+                SizedBox(
+                  height: 10.h,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    style: const TextStyle(
+                      fontSize: 15.0,
+                    ),
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      hintText: 'بحث عن هاتف',
+                    ),
+                    onChanged: (char) {
+                      setState(() {
+                        if (char.isEmpty) {
+                          setState(() {
+                            productList = searchList;
+                          });
+                        } else {
+                          productList = [];
+                          for (Phones model in searchList) {
+                            if (model.name!.contains(char)) {
+                              productList.add(model);
+                            }
+                          }
+                          setState(() {});
+                        }
+                      });
+                    },
+                  ),
+                ),
                 SizedBox(
                   height: 10.h,
                 ),
@@ -86,7 +127,36 @@ class _UserProductsState extends State<UserProducts> {
                             itemBuilder: (context, index) {
                               return Container(
                                 child: InkWell(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return PhoneDetails(
+                                        imageUrl: productList[index]
+                                            .imageUrl
+                                            .toString(),
+                                        name:
+                                            productList[index].name.toString(),
+                                        color:
+                                            productList[index].color.toString(),
+                                        details: productList[index]
+                                            .details
+                                            .toString(),
+                                        price1: productList[index]
+                                            .price1
+                                            .toString(),
+                                        price2: productList[index]
+                                            .price2
+                                            .toString(),
+                                        price3: productList[index]
+                                            .price3
+                                            .toString(),
+                                        ram: productList[index].ram.toString(),
+                                        space:
+                                            productList[index].space.toString(),
+                                            store: productList[index].store.toString()
+                                      );
+                                    }));
+                                  },
                                   child: Card(
                                     color: Colors.white,
                                     shape: RoundedRectangleBorder(
@@ -125,71 +195,8 @@ class _UserProductsState extends State<UserProducts> {
                                                   color: Colors.black),
                                             ),
                                           ),
-                                          RatingBar.builder(
-                                            initialRating: productList[index]
-                                                .rating!
-                                                .toDouble(),
-                                            minRating: 1,
-                                            direction: Axis.horizontal,
-                                            allowHalfRating: true,
-                                            itemCount: 5,
-                                            itemSize: 18,
-                                            itemPadding: EdgeInsets.symmetric(
-                                                horizontal: 2.0),
-                                            itemBuilder: (context, _) => Icon(
-                                              Icons.star,
-                                              color: Colors.amber,
-                                            ),
-                                            onRatingUpdate:
-                                                (double rating2) async {
-                                              rating2.toDouble();
-                                              User? user = FirebaseAuth
-                                                  .instance.currentUser;
-
-                                              if (user != null) {
-                                                String uid = user.uid;
-                                                int date = DateTime.now()
-                                                    .millisecondsSinceEpoch;
-
-                                                DatabaseReference companyRef =
-                                                    FirebaseDatabase.instance
-                                                        .reference()
-                                                        .child('products')
-                                                        .child('${widget.name}')
-                                                        .child(
-                                                            productList[index]
-                                                                .id
-                                                                .toString());
-
-                                                await companyRef.update({
-                                                  'rating': rating2.toInt(),
-                                                });
-                                              }
-                                            },
-                                          ),
                                           SizedBox(
                                             height: 10.h,
-                                          ),
-                                          ConstrainedBox(
-                                            constraints:
-                                                BoxConstraints.tightFor(
-                                                    width: 100.w, height: 35.h),
-                                            child: ElevatedButton(
-                                              child: Text('الأسعار'),
-                                              onPressed: () async {
-                                                Navigator.push(context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) {
-                                                  return UserPrices(
-                                                    storeName: '${widget.name}',
-                                                    productName:
-                                                        '${productList[index].name}',
-                                                    imageUrl:
-                                                        '${productList[index].imageUrl}',
-                                                  );
-                                                }));
-                                              },
-                                            ),
                                           ),
                                         ]),
                                       ),
@@ -201,7 +208,7 @@ class _UserProductsState extends State<UserProducts> {
                             staggeredTileBuilder: (int index) =>
                                 new StaggeredTile.count(
                                     3, index.isEven ? 3 : 3),
-                            mainAxisSpacing: 50.0.h,
+                            mainAxisSpacing: 20.0.h,
                             crossAxisSpacing: 5.0.w,
                           ),
                         )
@@ -210,8 +217,7 @@ class _UserProductsState extends State<UserProducts> {
                   ),
                 ),
               ],
-            )
-            ),
+            )),
       ),
     );
   }

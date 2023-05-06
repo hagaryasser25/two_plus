@@ -197,7 +197,8 @@ class _AddOfferState extends State<AddOffer> {
                   ),
                 ),
               ),
-            )),
+            )
+            ),
       ),
     );
   }

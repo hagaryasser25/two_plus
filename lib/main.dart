@@ -6,6 +6,7 @@ import 'package:two_plus/admin/add_store.dart';
 import 'package:two_plus/admin/admin_complains.dart';
 import 'package:two_plus/admin/admin_home.dart';
 import 'package:two_plus/admin/admin_offers.dart';
+import 'package:two_plus/admin/admin_phones.dart';
 import 'package:two_plus/admin/admin_stores.dart';
 import 'package:two_plus/admin/admin_subscription.dart';
 import 'package:two_plus/auth/admin_login.dart';
@@ -21,6 +22,9 @@ import 'package:two_plus/store/store_subscription.dart';
 import 'package:two_plus/user/send_complain.dart';
 import 'package:two_plus/user/user_favourite.dart';
 import 'package:two_plus/user/user_home.dart';
+import 'package:two_plus/user/user_phones.dart';
+
+import 'admin/add_phone.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -76,6 +80,9 @@ class MyApp extends StatelessWidget {
         AdminComplains.routeName: (ctx) => AdminComplains(),
         UserComplain.routeName: (ctx) => UserComplain(),
         SplashScreen.routeName: (ctx) => SplashScreen(),
+        AdminPhones.routeName: (ctx) => AdminPhones(),
+        UserPhones.routeName: (ctx) => UserPhones(),
+        AddPhone.routeName: (ctx) => AddPhone(),
       },
     );
   }

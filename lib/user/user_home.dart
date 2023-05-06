@@ -10,6 +10,7 @@ import 'package:two_plus/store/store_replays.dart';
 import 'package:two_plus/user/send_complain.dart';
 import 'package:two_plus/user/store_details.dart';
 import 'package:two_plus/user/user_favourite.dart';
+import 'package:two_plus/user/user_phones.dart';
 
 import '../auth/login_page.dart';
 import '../models/store_model.dart';
@@ -37,7 +38,6 @@ class _UserHomeState extends State<UserHome> {
     fetchStores();
   }
 
-  @override
   void fetchStores() async {
     app = await Firebase.initializeApp();
     database = FirebaseDatabase(app: app);
@@ -103,6 +103,18 @@ class _UserHomeState extends State<UserHome> {
                           },
                           title: Text('المفضلة'),
                           leading: Icon(Icons.favorite),
+                        ))),
+                Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                        splashColor: Theme.of(context).splashColor,
+                        child: ListTile(
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, UserPhones.routeName);
+                          },
+                          title: Text('المنتجات'),
+                          leading: Icon(Icons.mobile_friendly),
                         ))),
                 Material(
                     color: Colors.transparent,
