@@ -195,7 +195,8 @@ class _PhoneDetailsState extends State<PhoneDetails> {
                       color: Colors.white,
                       child: Column(
                         children: [
-                          SizedBox(
+                          //
+                          SizedBox( 
                             height: 5.h,
                           ),
                           Row(
