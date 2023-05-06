@@ -50,7 +50,7 @@ class _PhoneDetailsState extends State<PhoneDetails> {
           backgroundColor: HexColor('#f4cccc'),
           appBar: AppBar(
               backgroundColor: Color.fromARGB(255, 243, 90, 79),
-              title: Center(child: Text('نفاصيل المنتج'))),
+              title: Center(child: Text(' تفاصيل المنتج'))),
           body: SingleChildScrollView(
             child: Column(
               children: [
@@ -117,14 +117,16 @@ class _PhoneDetailsState extends State<PhoneDetails> {
                           Row(
                             children: [
                               SizedBox(width: 30.w),
-                              Column(
-                                children: [
-                                  Text('اسم المتجر: ${widget.store}'),
-                                  Text('السعر: ${widget.price1}'),
-                                ],
+                              Container(
+                                width: 150.w,
+                                child: Column(
+                                  children: [
+                                    Text('السعر: ${widget.price1}'),
+                                  ],
+                                ),
                               ),
                               SizedBox(
-                                width: 100.w,
+                                width: 70.w,
                               ),
                               Column(
                                 children: [
@@ -157,14 +159,16 @@ class _PhoneDetailsState extends State<PhoneDetails> {
                           Row(
                             children: [
                               SizedBox(width: 30.w),
-                              Column(
-                                children: [
-                                  Text('اسم المتجر: بى تيك'),
-                                  Text('السعر: ${widget.price2}'),
-                                ],
+                              Container(
+                                width: 150.w,
+                                child: Column(
+                                  children: [
+                                    Text('السعر: ${widget.price2}'),
+                                  ],
+                                ),
                               ),
                               SizedBox(
-                                width: 110.w,
+                                width: 70.w,
                               ),
                               Column(
                                 children: [
@@ -197,11 +201,13 @@ class _PhoneDetailsState extends State<PhoneDetails> {
                           Row(
                             children: [
                               SizedBox(width: 30.w),
-                              Column(
-                                children: [
-                                  Text('اسم المتجر: dream 2000'),
-                                  Text('السعر: ${widget.price3}'),
-                                ],
+                              Container(
+                                width: 150.w,
+                                child: Column(
+                                  children: [
+                                    Text('السعر: ${widget.price3}'),
+                                  ],
+                                ),
                               ),
                               SizedBox(
                                 width: 70.w,

@@ -148,37 +148,6 @@ class _AddPhoneState extends State<AddPhone> {
                     height: 65.h,
                     child: TextField(
                       style: TextStyle(color: Color.fromARGB(255, 243, 90, 79)),
-                      controller: storeController,
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                          borderSide: BorderSide(
-                            width: 1.0,
-                            color: Color.fromARGB(255, 243, 90, 79),
-                          ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                          borderSide: BorderSide(
-                              width: 1.0,
-                              color: Color.fromARGB(255, 243, 90, 79)),
-                        ),
-                        border: OutlineInputBorder(),
-                        hintText: 'اسم المتجر',
-                        hintStyle: TextStyle(
-                          color: Color.fromARGB(255, 243, 90, 79),
-                          fontFamily: 'Cairo',
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 25.h,
-                  ),
-                  SizedBox(
-                    height: 65.h,
-                    child: TextField(
-                      style: TextStyle(color: Color.fromARGB(255, 243, 90, 79)),
                       controller: spaceController,
                       decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
@@ -452,7 +421,6 @@ class _AddPhoneState extends State<AddPhone> {
                             'price1': price1,
                             'price2': price2,
                             'price3': price3,
-                            'store': store,
                           });
                         }
                         showAlertDialog(context);

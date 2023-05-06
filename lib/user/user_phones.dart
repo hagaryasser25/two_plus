@@ -188,7 +188,7 @@ class _UserPhonesState extends State<UserPhones> {
                                           FittedBox(
                                             fit: BoxFit.fitWidth,
                                             child: Text(
-                                              '${productList[index].store} ',
+                                              '${productList[index].space} ',
                                               style: TextStyle(
                                                   overflow:
                                                       TextOverflow.ellipsis,
