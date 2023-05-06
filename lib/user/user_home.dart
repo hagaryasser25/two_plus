@@ -113,7 +113,7 @@ class _UserHomeState extends State<UserHome> {
                             Navigator.pushNamed(
                                 context, UserPhones.routeName);
                           },
-                          title: Text('المنتجات'),
+                          title: Text('البحث عن الهواتف'),
                           leading: Icon(Icons.mobile_friendly),
                         ))),
                 Material(

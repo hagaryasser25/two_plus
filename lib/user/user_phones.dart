@@ -188,7 +188,7 @@ class _UserPhonesState extends State<UserPhones> {
                                           FittedBox(
                                             fit: BoxFit.fitWidth,
                                             child: Text(
-                                              '${productList[index].space} GB',
+                                              '${productList[index].store} ',
                                               style: TextStyle(
                                                   overflow:
                                                       TextOverflow.ellipsis,
@@ -198,6 +198,8 @@ class _UserPhonesState extends State<UserPhones> {
                                           SizedBox(
                                             height: 10.h,
                                           ),
+                                         
+                                          
                                         ]),
                                       ),
                                     ),

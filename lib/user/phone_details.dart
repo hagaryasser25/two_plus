@@ -86,6 +86,22 @@ class _PhoneDetailsState extends State<PhoneDetails> {
                   '${widget.name}',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                 ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(right: 15.w),
+                  child: Align(
+                    alignment: Alignment.topRight,
+                    child: Text(
+                      'قائمة الأسعار',
+                      style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.red),
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
@@ -101,14 +117,103 @@ class _PhoneDetailsState extends State<PhoneDetails> {
                           Row(
                             children: [
                               SizedBox(width: 30.w),
-                              Text('اسم المتجر: ${widget.store}'),
+                              Column(
+                                children: [
+                                  Text('اسم المتجر: ${widget.store}'),
+                                  Text('السعر: ${widget.price1}'),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 100.w,
+                              ),
+                              Column(
+                                children: [
+                                  Image.asset(
+                                    'assets/images/phone.png',
+                                    height: 100.h,
+                                    width: 100.w,
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    width: double.infinity,
+                    height: 120.h,
+                    child: Card(
+                      color: Colors.white,
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(width: 30.w),
+                              Column(
+                                children: [
+                                  Text('اسم المتجر: بى تيك'),
+                                  Text('السعر: ${widget.price2}'),
+                                ],
+                              ),
+                              SizedBox(
+                                width: 110.w,
+                              ),
+                              Column(
+                                children: [
+                                  Image.asset(
+                                    'assets/images/phone.png',
+                                    height: 100.h,
+                                    width: 100.w,
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    width: double.infinity,
+                    height: 120.h,
+                    child: Card(
+                      color: Colors.white,
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 5.h,
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(width: 30.w),
+                              Column(
+                                children: [
+                                  Text('اسم المتجر: dream 2000'),
+                                  Text('السعر: ${widget.price3}'),
+                                ],
+                              ),
                               SizedBox(
                                 width: 70.w,
                               ),
-                              Image.asset(
-                                'assets/images/phone.png',
-                                height: 100.h,
-                                width: 100.w,
+                              Column(
+                                children: [
+                                  Image.asset(
+                                    'assets/images/phone.png',
+                                    height: 100.h,
+                                    width: 100.w,
+                                  ),
+                                ],
                               )
                             ],
                           ),
@@ -120,7 +225,6 @@ class _PhoneDetailsState extends State<PhoneDetails> {
                 SizedBox(
                   height: 10.h,
                 ),
-                
                 Padding(
                   padding: EdgeInsets.only(right: 15.w, left: 15.w),
                   child: Text('${widget.details}'),
@@ -144,24 +248,7 @@ class _PhoneDetailsState extends State<PhoneDetails> {
                       alignment: Alignment.topRight,
                       child: Text('الألوان المتوفرة : ${widget.color}')),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(right: 15.w, left: 15.w),
-                  child: Align(
-                      alignment: Alignment.topRight,
-                      child: Text('السعر الأول: ${widget.price1}')),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(right: 15.w, left: 15.w),
-                  child: Align(
-                      alignment: Alignment.topRight,
-                      child: Text('السعر الثانى: ${widget.price2}')),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(right: 15.w, left: 15.w),
-                  child: Align(
-                      alignment: Alignment.topRight,
-                      child: Text('السعر الثالث: ${widget.price3}')),
-                ),
+             
               ],
             ),
           ),

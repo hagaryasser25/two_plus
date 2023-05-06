@@ -322,7 +322,7 @@ class _AddPhoneState extends State<AddPhone> {
                               color: Color.fromARGB(255, 243, 90, 79)),
                         ),
                         border: OutlineInputBorder(),
-                        hintText: 'السعر الأول',
+                        hintText: 'السعر فى المتجر الأول',
                         hintStyle: TextStyle(
                           color: Color.fromARGB(255, 243, 90, 79),
                           fontFamily: 'Cairo',
@@ -353,7 +353,7 @@ class _AddPhoneState extends State<AddPhone> {
                               color: Color.fromARGB(255, 243, 90, 79)),
                         ),
                         border: OutlineInputBorder(),
-                        hintText: 'السعر الثانى',
+                        hintText: 'السعر فى المتجر الثانى',
                         hintStyle: TextStyle(
                           color: Color.fromARGB(255, 243, 90, 79),
                           fontFamily: 'Cairo',
@@ -384,7 +384,7 @@ class _AddPhoneState extends State<AddPhone> {
                               color: Color.fromARGB(255, 243, 90, 79)),
                         ),
                         border: OutlineInputBorder(),
-                        hintText: 'السعر الثالث',
+                        hintText: 'السعر فى المتجر الثالث',
                         hintStyle: TextStyle(
                           color: Color.fromARGB(255, 243, 90, 79),
                           fontFamily: 'Cairo',
